@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .navbar {
+            background-color: #2f4f4f; /* Dark Green */
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important; /* White */
+        }
+        .nav-link:hover {
+            color: #81cc81 !important; /* Pale Green */
+        }
+        /* Set each section to cover full viewport height */
+        section {
+            min-height: 100vh;
+            padding: 80px 0; /* Adjust top and bottom padding for vertical centering */
+            color: #2f4f4f; /* Dark Green */
+            background-image:url(lbg1.jpg);
+            background-color: #e0f8e0; /* Ensure this path is correct */
+            background-size: cover; /* Cover the entire section */
+            background-position: center; /* Center the image */
+            background-attachment: fixed; /* Fixed background for parallax effect */
+            background-repeat: no-repeat; /* No repeat */
+        }
+        h2 {
+            color: #2f4f4f; /* Dark Green */
+        }
+        /*.card {
+            border: none;
+            transition: transform 0.2s;
+        }*/
+        .cert-details {
+            background-color: transparent;
+           
+        }
+        .card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+        }
+        .cert-item {
+            cursor: pointer;
+        }
+        .cert-item:hover {
+            opacity: 0.8;
+        }
+        .skill-level {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .skill-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(#539453 0% var(--percentage), #e0f8e0 var(--percentage) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 10px;
+        }
+        .skill-circle::before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background-color: #ffffff; /* White */
+            border-radius: 50%;
+        }
+        .skill-level-text {
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2f4f4f; /* Dark Green */
+        }
+        footer {
+            background-color: #2f4f4f; /* Dark Green */
+            color: #ffffff; /* White */
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-buttons .btn {
+            width: 300px;
+            height: 60px;
+            font-size: 18px;
+            border-radius: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .contact-buttons .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        /* Contact Me Section */
+        .contact-buttons .btn {
+            border: 2px solid #2f4f4f;
+            background-color: transparent;
+            color: #2f4f4f;
+            border-radius: 30px;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .contact-buttons .btn:hover {
+            background-color: #2f4f4f;
+            color: #ffffff;
+        }
+       
+        /* Custom styling for icon buttons */
+        .btn-dark {
+            color: #2f4f4f !important; /* White text color */
+            background-color: transparent !important; /* Black background */
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-dark:hover {
+            background-color: none !important; /* Slightly lighter black on hover */
+        }
+        .btn-dark i {
+            font-size: 24px; /* Icon size */
+        }
+        .btn-dark:hover i {
+            transform: scale(1.5); /* Slightly enlarge icon on hover */
+            transition: transform 0.2s;
+        }
+       
+        .color{
+            background-color: #2f4f4f;
+        }
+        .hover-color{
+            color: #447474;
+        }
+        
+        
+        .experience-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .experience-card img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .experience-card .card-body {
+            padding-left: 15px;
+            width: 95%;
+        }
+
+        .experience-card:hover {
+            transform: scale();
+        }
+
+        .tooltip-content {
+            display:none;
+            position: absolute;
+            background-color: rgb(52, 68, 45);
+            color: rgb(215, 226, 216);
+            padding: 10px;
+            border-radius: 5px;
+            text-decoration:solid;
+            text-align: center;
+        }
+
+        .experience-card:hover .tooltip-content {
+            display: block;
+            text-align: center;
+        }
+        .tooltip-content h5 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .alignment {
+            text-align: center;
+            text-align: center;
+        }
+        .img-home{
+            width: 300px;
+            height: 500px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">My Portfolio</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills & Certifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact Me</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+       <!-- Home Section -->
+       <section id="home" class="d-flex align-items-center">
+        <div class="container text-center">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-4 mb-3">
+                    <img src="me.jpg" alt="Your Photo" class="img-fluid img-home">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="mb-3">Welcome to My Portfolio</h2>
+                    <p class="lead">Hello! I'm Charani Kaushalya, a passionate Undergraduate student about security.
+                        Explore my work and get to know me better.</p>
+                    <div class="d-flex justify-content-center mt-4">
+                        <a href="https://www.linkedin.com/in/charani-kaushalya-57b857287" class="btn btn-dark mr-2" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://medium.com/@kaushalyadanapala01" class="btn btn-dark mr-2" target="_blank" title="Medium">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                        <a href="https://github.com/CharaniKaushalya" class="btn btn-dark mr-2" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.credly.com/users/charani-kaushalya" class="btn btn-dark mr-2" target="_blank" title="Credly">
+                            <i class="fas fa-certificate"></i>
+                        </a>
+                        <a href="https://www.cloudskillsboost.google/public_profiles/cc4ac5ab-c7cc-47a3-a193-3f5951e9afed" class="btn btn-dark" target="_blank" title="Google Cloud Skills">
+                            <i class="fas fa-cloud"></i>
+                        </a>
+                    </div>
+                    <!-- Add Resume PDF Link Here -->
+                    <a href="file:///C:/Users/o2006/Desktop/Portfolio/resume.pdf" class="btn btn-outline-dark mt-4  " target="_blank">Resume
+                        <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+ <!-- About Me Section -->
+ <section id="about" class="d-flex align-items-center justify-content-center">
+    <div class="container text-center">
+        <h2 class="text-center mb-4">About Me</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <p>As an undergraduate student at the Vavuniya Campus of the University of Jaffna, I am currently pursuing a Bachelor of Information and Communication Technology BICT (Hons) degree in the Faculty of Technological Studies. My academic journey has equipped me with a strong foundation in ICT, focusing on both theoretical knowledge and practical skills.</p>
+                <p>I am particularly passionate about cybersecurity, and I have been diligently preparing for a career in this field. My goal is to leverage my expertise to contribute to safeguarding digital infrastructures and ensuring data integrity in an increasingly interconnected world.</p>
+                <p>In my spare time, I enjoy working on personal projects that challenge my coding skills and exploring new technologies to stay updated in the ever-evolving tech landscape.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="d-flex align-items-center">
+        <div class="container text-center">
+            <h2 class="text-center mb-4">My Projects</h2>
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="NetworkSniffer.jpg"alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Basic Network Sniffer</h5>
+                            <p class="card-text">
+                                Purpose: To capture and display IPv4 packet details using a raw socket.
+                                Libraries: socket for socket operations, struct for unpacking binary data, and potentially textwrap for formatting output.
+                                Techniques: Raw socket creation, binary data unpacking, packet parsing, and exception handling.
+                            </p>
+                            <p> Link of GitHub <a href = "https://github.com/CharaniKaushalya/NetworkSniffer"></a> <i class="fas fa-arrow-right ml-2"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="Codereviwer.png" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Source Code Reviwer (Mannual) </h5>
+                            <p class="card-text">
+                            Flask Framework:Routing, templating with Jinja2, form handling 
+                            SQLAlchemy: database querying, schema management.
+                            WTForms:  Form field validation, CSRF protection, form submission handling.
+                            Security Best Practices:  CSRF protection, safeguarding against SQL injection, secure password storage, and configuring HTTPS.
+                        </p>
+                        <p> Link of GitHub <a href = "https://github.com/CharaniKaushalya/Secure-Code-Review"></a><i class="fas fa-arrow-right ml-2"></i></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 3 
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="project3.jpg" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Title 3</h5>
+                            <p class="card-text">Brief description of Project 3.</p>
+                        </div>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </section>
+
+ <!-- Skills & Certifications Section -->
+    <section id="skills" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Skills & Certifications</h2>
+            <div class="row ">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item " data-link="cert1.html">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Junior Cybersecurity Analyst Career Path Certification</h5>
+                            <p class="card-text">
+                                Six course series with Junior Cybersecurity Analyst Career Path Exam
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item" data-link="cert2.html">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Network Technician Career Path Certification </h5>
+                            <p class="card-text">
+                                Four course of series with Network Technician Career Path Exam
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item" data-link="cert3.html">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Google Cybersecurity Professional Certificate</h5>
+                            <p class="card-text">
+                               Eight course of series with Google Cybersecurity Professional Certification
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item" data-link="cert4.html">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Introduction to Cryptography for Beginners Certification</h5>
+                            <p class="card-text"> Basics of cryptography.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item" data-link="cert5.html">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Official ISC2 Certified in Cybersecurity Certification </h5>
+                            <p class="card-text">Details about the third certification.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item" data-link="cert3.pdf">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Certification 6</h5>
+                            <p class="card-text">Details about the third certification.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item" data-link="cert3.pdf">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Certification 7</h5>
+                            <p class="card-text">Details about the third certification.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card shadow-sm cert-item" data-link="cert3.pdf">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">Certification 8</h5>
+                            <p class="card-text">Details about the third certification.</p>
+                        </div>
+                    </div>
+                </div-->
+            </div>
+            <div class="skill-level">
+                <div class="skill-circle" style="--percentage: 80%;">
+                    <div class="skill-level-text"> Python </div>
+                </div>
+                <div class="skill-circle" style="--percentage: 60%;">
+                    <div class="skill-level-text"> Java </div>
+                </div>
+                <div class="skill-circle" style="--percentage: 90%;">
+                    <div class="skill-level-text"> HTML/CSS/Js</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education-->
+    <section id="experience" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Education and Experience</h2>
+            <div class="row">
+                <!-- Education - Poramadulla Central College -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm position-relative  experience-card">
+                        <img src="school.jpg" alt="Poramadulla Central College" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Poramadulla Central College</h5>
+                            <p class="card-text">Higher Education</p>
+                            <p class="card-text">2011 - 2019</p>
+                        </div>
+                        <!-- Tooltip content -->
+                        <div class="card-body tooltip-content">
+                            <div class="">
+                                <h5 class="card-title ">Higher Education</h5>
+                                <p class="card-text">Engineering Technology stream</p>
+                                <p class="card-text">
+                                    I pursued my higher education at Poramadulla Central College, specializing in Engineering
+                                    Technology within the technology stream. This academic journey equipped me with a robust
+                                    foundation in theoretical knowledge and practical skills essential for the field.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Undergraduate Education - University of Jaffna -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm position-relative  experience-card">
+                        <img src="uni.jpg" alt="University of Jaffna" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Vavuniya Campus, University of Jaffna</h5>
+                            <p class="card-text">Undergraduate student</p>
+                            <p class="card-text">2021 - present</p>
+                        </div>
+                        <!-- Tooltip content -->
+                        <div class="card-body tooltip-content">
+                            <div class="">
+                                <h5 class="card-title">Collage Education</h5>
+                                <p class="card-text">Company Name</p>
+                                <p class="card-text">
+                                    I am currently pursuing my undergraduate education at the Vavuniya Campus of the
+                                    University of Jaffna, specializing in Information and Communication Technology (ICT).
+                                    This academic pursuit provides me with a comprehensive understanding of ICT principles,
+                                    combining theoretical knowledge with practical skills essential for the field.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Virtual Internship - TATA Consultancy Services -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm position-relative experience-card">
+                        <img src="tata.png" alt="TATA Consultancy Services" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">TATA Consultancy Services</h5>
+                            <p class="card-text">IAM Developer - Virtual Internship</p>
+                            <p class="card-text">Jun 2024 (1 month)</p>
+                        </div>
+                        <!-- Tooltip content -->
+                        <div class="tooltip-content card-body">
+                            <div class="">
+                                <h5 class="card-title">IAM Developer</h5>
+                                <p class="card-text">Virtual Internship</p>
+                                <p class="card-text">
+                                    Completed a virtual internship as an Identity and Access Management (IAM) Developer
+                                    role within the cybersecurity team at TATA Consultancy Services (TCS). Skills include
+                                    IAM, access control.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Virtual Micro Internship - Mastercard -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm position-relative  experience-card">
+                        <img src="mastercard.jpg" alt="Mastercard" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Mastercard</h5>
+                            <p class="card-text">Cybersecurity Analyst - Virtual Micro Internship</p>
+                            <p class="card-text">Jun 2024</p>
+                        </div>
+                        <!-- Tooltip content -->
+                        <div class="tooltip-content card-body">
+                            <div class="">
+                                <h5 class="card-title">Analyst, Security Awareness Team</h5>
+                                <p class="card-text">Virtual Micro Internship</p>
+                                <p class="card-text">
+                                    Completed a virtual micro internship serving as an Analyst on Mastercard’s Security
+                                    Awareness Team. Identified security threats like phishing, implemented security
+                                    training for teams.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cybersecurity Internship -->
+                <div class="col-lg-6 mb-4">
+                    <div class="card shadow-sm position-relative  experience-card">
+                        <img src="ca.jpg" alt="Cybersecurity Internship" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">Cybersecurity Internship</h5>
+                            <p class="card-text">Cybersecurity Domain</p>
+                            <p class="card-text">Apr 2024 - present</p>
+                        </div>
+                        <!-- Tooltip content -->
+                        <div class="tooltip-content card-body">
+                            <div class="">
+                                <h5 class="card-title">Cybersecurity Internship</h5>
+                                <p class="card-text">Cybersecurity Internship</p>
+                                <p class="card-text">
+                                    Currently undertaking a cybersecurity internship, 
+                                    gaining hands-on experience in the
+                                    cybersecurity domain.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <!-- Contact Me Section -->
+    <section id="contact" class="d-flex align-items-center">
+        <div class="container text-center">
+            <h2 class="text-center mb-4">Contact Me</h2>
+            <p>If you would like to get in touch, feel free to reach out to me via email or connect with me on
+                social media.</p>
+            <div class="contact-buttons">
+                <a href="mailto:charani@example.com" class="btn btn-outline-dark">  <i class="fas fa-envelope"></i> Email </a>
+                <a href="https://www.linkedin.com/in/charani-kaushalya-57b857287" class="btn btn-outline-dark">   <i class="fab fa-linkedin"></i> Connect
+                on LinkedIn</a>
+                <a href="mailto:charani@example.com" class="btn btn-outline-dark"> <i class="fas fa-phone"> </i>call
+                </i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer 
+    <footer class="py-4">
+        <div class="container">
+            <p class="mb-0">© 2024 Charani Kaushalya. All Rights Reserved.</p>
+        </div>
+    </footer>-->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Get all elements with the class 'cert-item'
+        var certItems = document.querySelectorAll('.cert-item');
+
+        // Loop through each element and add a click event listener
+        certItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                // Get the link from the data-link attribute
+                var link = this.getAttribute('data-link');
+
+                // Redirect to the link
+                window.location.href = link;
+            });
+        });
+    });
+</script>
+
+    
+</body>
+</html>

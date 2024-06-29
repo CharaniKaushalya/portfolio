@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charani Kaushalya's Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* Navbar Styles */
+        .navbar {
+            background-color: #2f4f4f; /* Dark Green */
+        }
+        .navbar-brand, .nav-link {
+            color: #ffffff !important; /* White */
+        }
+        .nav-link:hover {
+            color: #81cc81 !important; /* Pale Green */
+        }
+
+        /* Section Styles */
+        section {
+            min-height: 100vh;
+            padding: 80px 0; /* Adjust top and bottom padding for vertical centering */
+            color: #2f4f4f; /* Dark Green */
+            background-color: #e0f8e0; /* Light Green background color */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Header Styles */
+        h2 {
+            color: #2f4f4f; /* Dark Green */
+        }
+
+        /* Card Hover Effect */
+        .card:hover {
+            transform: translateY(-5px); /* Lift card on hover */
+        }
+
+        /* Certification Item Hover Effect */
+        .cert-item {
+            cursor: pointer;
+        }
+        .cert-item:hover {
+            opacity: 0.8;
+        }
+
+        /* Skill Level Circle Styles */
+        .skill-level {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .skill-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(#539453 0% var(--percentage), #e0f8e0 var(--percentage) 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 10px;
+        }
+        .skill-circle::before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background-color: #ffffff; /* White */
+            border-radius: 50%;
+        }
+        .skill-level-text {
+            position: absolute;
+            font-size: 20px;
+            font-weight: bold;
+            color: #2f4f4f; /* Dark Green */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #2f4f4f; /* Dark Green */
+            color: #ffffff; /* White */
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Contact Button Styles */
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .contact-buttons .btn {
+            width: 300px;
+            height: 60px;
+            font-size: 18px;
+            border-radius: 30px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .contact-buttons .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        .contact-buttons .btn {
+            border: 2px solid #2f4f4f;
+            background-color: transparent;
+            color: #2f4f4f;
+            border-radius: 30px;
+            font-size: 18px;
+            padding: 10px 20px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .contact-buttons .btn:hover {
+            background-color: #2f4f4f;
+            color: #ffffff;
+        }
+
+        /* Dark Button Styles */
+        .btn-dark {
+            color: #2f4f4f !important; /* Dark Green text color */
+            background-color: transparent !important; /* Transparent background */
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .btn-dark:hover {
+            background-color: none !important; /* Maintain transparent on hover */
+        }
+        .btn-dark i {
+            font-size: 24px; /* Icon size */
+        }
+        .btn-dark:hover i {
+            transform: scale(1.5); /* Slightly enlarge icon on hover */
+            transition: transform 0.2s;
+        }
+
+        /* General Styles */
+        .color {
+            background-color: #2f4f4f;
+        }
+        .hover-color {
+            color: #447474;
+        }
+
+        /* Experience Card Styles */
+        .experience-card {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            transition: transform 0.2s ease-in-out;
+        }
+        .experience-card img {
+            width: 50%;
+            height: auto;
+            border-radius: 8px;
+        }
+        .experience-card .card-body {
+            padding-left: 15px;
+            width: 95%;
+        }
+        .experience-card:hover {
+            transform: scale(1.05); /* Slightly enlarge card on hover */
+        }
+
+        /* Tooltip Styles */
+        .tooltip-content {
+            display: none;
+            position: absolute;
+            background-color: rgba(181, 219, 189, 0.8);
+            color: rgb(74, 105, 78);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .experience-card:hover .tooltip-content {
+            display: block;
+        }
+        .tooltip-content h5 {
+            margin-top: 0;
+        }
+
+        /* Image Hover Effect */
+        .body-image {
+            transition: opacity 0.3s ease; /* Smooth transition */
+            max-width: 100%;
+            height: auto;
+        }
+        .body-image:hover {
+            opacity: 0.5; /* Reduce opacity on hover */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href="#">Portfolio</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="container text-center">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-4 mb-3">
+                    <img src="bg.jpg" alt="Your Photo" class="img-fluid custom-img body-image">
+                </div>
+                <div class="col-md-6">
+                    <h2 class="mb-3">Welcome to My Portfolio</h2>
+                    <p class="lead">Hello! I'm Charani Kaushalya, a passionate Undergraduate student about security. Explore my work and get to know me better.</p>
+                    <div class="d-flex justify-content-center mt-4">
+                        <a href="https://www.linkedin.com/in/charani-kaushalya-57b857287" class="btn btn-dark mr-2" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://medium.com/@kaushalyadananjali44" class="btn btn-dark mr-2" target="_blank" title="Medium">
+                            <i class="fab fa-medium"></i>
+                        </a>
+                        <a href="https://github.com/charanikaushalya" class="btn btn-dark" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="text-center mb-5">About Me</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p>Hi, I'm Charani Kaushalya, an Undergraduate student with a keen interest in security. I love exploring new technologies and applying them to solve real-world problems. Welcome to my portfolio where you can see some of my projects and achievements.</p>
+                </div>
+                <div class="col-md-6">
+                    <p>In my free time, I enjoy reading about the latest trends in technology, experimenting with new programming languages, and contributing to open-source projects. I'm always looking for opportunities to learn and grow in the field of security.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container text-center">
+            <h2 class="mb-5">Skills</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="skill-level">
+                        <div class="skill-circle" style="--percentage: 90%">
+                            <div class="skill-level-text">HTML</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-level">
+                        <div class="skill-circle" style="--percentage: 80%">
+                            <div class="skill-level-text">CSS</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="skill-level">
+                        <div class="skill-circle" style="--percentage: 70%">
+                            <div class="skill-level-text">JavaScript</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container text-center">
+            <h2 class="mb-5">Contact Me</h2>
+            <div class="contact-buttons">
+                <a href="mailto:kaushalyadananjali44@gmail.com" class="btn btn-outline-dark" target="_blank">Email Me</a>
+                <a href="https://www.linkedin.com/in/charani-kaushalya-57b857287" class="btn btn-outline-dark" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2023 Charani Kaushalya. All rights reserved.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
