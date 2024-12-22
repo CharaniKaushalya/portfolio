@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Categories</title>
+    
+    <link rel="stylesheet" href="project.css">
+</head>
+<body>
+    <!-- Close Icon -->
+    <div class="close-icon" id="closeButton" title="Close the Page">✖</div>
+
+    <!-- Google Drive Icon -->
+    <a href="https://drive.google.com/drive/folders/17FQ3cy8WFjGfAPMPu51Fw8RXkEjuAjYu?usp=drive_link" class="google-drive-icon" target="_blank" title="Visit my Google Drive for screen records">
+        📂
+    </a>
+
+    <h1>Security and Network Activity Projects</h1>
+    <div class="project-container">
+        <div class="project-card">
+            <img src="photo/project/packet.jpeg" class="project-image" alt="OpenCV Tutorial">
+            <h3 class="project-title">Packet Tracer activities</h3>
+            <p class="project-description">Cisco packet tracer activities to gain knowledge and experience.</p>
+            <a class="project-link" href="https://github.com/CharaniKaushalya/Activity" target="_blank">View Project</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("closeButton").addEventListener("click", function() {
+            window.location.href = "index.html#projects";
+        });
+    </script>
+</body>
+</html>

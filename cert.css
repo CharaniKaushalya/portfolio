@@ -1,0 +1,51 @@
+body{
+    background-image: url(b3.jpg);
+    background-color:rgb(235, 247, 235);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.cert-details {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+.cert-details img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+footer {
+    background-color: #2f4f4f; /* Dark Green */
+    color: #ffffff; /* White */
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+img{
+    width: 100px;
+    height: 100px;
+}
+
+.btn-custom {
+text-decoration: none; /* No underline */
+transition: transform 0.3s, background-color 0.3s, color 0.3s; /* Smooth transition for transform and color */
+}
+
+.btn-custom:hover {
+transform: scale(1.1); /* Slight zoom effect */
+background-color: transparent; 
+text-decoration: none;
+}
+
+
+.table , .table th, .table td {
+border: none; /* Remove border */
+color: #080808; /* White text */
+}
+
+.align{
+text-align: right;
+}

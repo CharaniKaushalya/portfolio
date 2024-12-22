@@ -1,0 +1,134 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    position: relative;
+}
+
+h1 {
+    text-align: center;
+    margin: 20px 0;
+    color: #555;
+}
+
+
+/* Project container */
+.project-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Project card */
+.project-card {
+    background: linear-gradient(135deg, #ece9e6, #ffffff);
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Project image */
+.project-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .project-image {
+    transform: scale(1.05);
+}
+
+/* Project content */
+.project-content {
+    padding: 15px;
+}
+
+.project-title {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.project-description {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.project-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    border-bottom: 2px solid transparent;
+    transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+.project-link:hover {
+    color: #0056b3;
+    border-bottom-color: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .project-card {
+        width: 90%;
+    }
+}
+
+/* Close Icon */
+.close-icon {
+    position: absolute;
+    top: 0px; /* Adjust vertical position */
+    right: 20px; /* Move to the top-right corner */
+    font-size: 24px;
+    color: #555;
+    cursor: pointer;
+    background-color: #ffffff;
+    padding: 8px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.close-icon:hover {
+    background-color: #f8d7da;
+    color: #721c24;
+    transform: scale(1.2);
+}
+
+/* Google Drive Icon */
+.google-drive-icon {
+    position: absolute;
+    top : 0px; /* Align near the bottom */
+    left: 20px; /* Align to the left edge */
+    font-size: 32px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+
+.google-drive-icon:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+

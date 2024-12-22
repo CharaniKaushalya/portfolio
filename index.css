@@ -12,7 +12,7 @@ section {
     min-height: 100vh;
     padding: 80px 0; /* Adjust top and bottom padding for vertical centering */
     color: #2f4f4f; /* Dark Green */
-    background-image:url(lbg1.jpg);
+    background-image:url(photo/lbg1.jpg);
     background-color: #e0f8e0; /* Ensure this path is correct */
     background-size: cover; /* Cover the entire section */
     background-position: center; /* Center the image */
@@ -199,3 +199,4 @@ footer {
     width: 300px;
     height: 500px;
 }
+
