@@ -99,17 +99,16 @@ h1 {
     font-size: 24px;
     color: #555;
     cursor: pointer;
-    background-color: #ffffff;
     padding: 8px;
     border-radius: 50%;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s, transform 0.3s;
 }
 
-.close-icon:hover {
-    background-color: #f8d7da;
+
+
+a{
+    text-decoration: none;
     color: #721c24;
-    transform: scale(1.2);
 }
 
 /* Google Drive Icon */
