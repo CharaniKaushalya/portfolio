@@ -44,8 +44,4 @@ You can view the live portfolio here:
 
 ![contact me](https://github.com/user-attachments/assets/8e043083-04a8-44a1-973d-29027161b18c)
 
-## Installation Instructions
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/CharaniKaushalya/portfolio.git
